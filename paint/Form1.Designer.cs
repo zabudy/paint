@@ -130,6 +130,7 @@
             this.rectanglB.Size = new System.Drawing.Size(94, 145);
             this.rectanglB.TabIndex = 2;
             this.rectanglB.UseVisualStyleBackColor = false;
+            this.rectanglB.Click += new System.EventHandler(this.rectanglB_Click);
             // 
             // heartB
             // 
@@ -182,6 +183,7 @@
             this.lineB.Size = new System.Drawing.Size(94, 145);
             this.lineB.TabIndex = 4;
             this.lineB.UseVisualStyleBackColor = false;
+            this.lineB.Click += new System.EventHandler(this.lineB_Click);
             // 
             // fillB
             // 
@@ -199,6 +201,7 @@
             this.fillB.Size = new System.Drawing.Size(94, 145);
             this.fillB.TabIndex = 3;
             this.fillB.UseVisualStyleBackColor = false;
+            this.fillB.Click += new System.EventHandler(this.fillB_Click);
             // 
             // tableLayoutPanel2
             // 
@@ -442,7 +445,8 @@
             this.pictureBox1.Size = new System.Drawing.Size(997, 527);
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.pictureBox1.Paint += new System.Windows.Forms.PaintEventHandler(this.pictureBox1_Paint);
+            this.pictureBox1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseClick);
             this.pictureBox1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseDown);
             this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseMove);
             this.pictureBox1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox1_MouseUp);
