@@ -14,16 +14,16 @@ namespace paint
         public Form1()
         {
             InitializeComponent();
-            SetSize();
-            /*btnStartDrawing.MouseEnter += (s, e) => {
-                btnStartDrawing.BackColor = Color.Pink;
-            };
-            btnStartDrawing.MouseLeave += (s, e) => {
-                btnStartDrawing.BackColor = Color.FromKnownColor(KnownColor.Control);
-            };*/
+
+            Rectangle rectangle = Screen.PrimaryScreen.Bounds;
+            map = new Bitmap(rectangle.Width, rectangle.Height);
+            graphics = Graphics.FromImage(map);
+            graphics.Clear(Color.White);
+            pictureBox1.Image = map;
+
         }
 
-        private class ArrayPoints
+        /*private class ArrayPoints
         {
             private int index = 0;
             private Point[] points;
@@ -58,104 +58,90 @@ namespace paint
             {
                 return points;
             }
-        }
+        }*/
 
-        private bool isMouse = false;
-        private ArrayPoints arrayPoints = new ArrayPoints(2);
 
         Bitmap map = new Bitmap(100, 100);
         Graphics graphics;
+        Pen pen = new Pen(Color.Black, 2);
+        Pen Eraser = new Pen(Color.White, 10);
 
-        Pen pen = new Pen(Color.Black, 3f);
+        bool is_mouse = false;
+        Point px, py;
 
-        private void SetSize()
-        {
-            Rectangle rectangle = Screen.PrimaryScreen.Bounds;
-            map = new Bitmap(rectangle.Width, rectangle.Height);
-            graphics = Graphics.FromImage(map);
-        }
+        int index = 0;
+        int x, y, sX, sY, cX, cY;
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
+        Color new_clr;
 
-        }
 
         private void Form1_Load(object sender, EventArgs e)
         {
            // MouseHover
         }
 
-        private void tableLayoutPanel1_Paint_1(object sender, PaintEventArgs e)
-        {
+        
 
-        }
-
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)//cercle button
         {
-            is_cerc = true;
-            is_eraser = false;
-            is_Pen = false;
-            is_rectangle = false;
-            is_line = false;
-            is_fill = false;
+            index = 3;
         }
 
 
-        int x, y, sX, sY, cX, cY;
+        
 
         private void pictureBox1_MouseDown(object sender, MouseEventArgs e)
         {
-            isMouse = true;
+            is_mouse = true;
+            py = e.Location;
 
-
-            //cerc
             cX = e.X;
             cY = e.Y;
         }
 
-        /*private void pictureBox1_Click(object sender, MouseEventArgs e)
-        {
-            if (is_fill)
-            {
-                Point p = set_point(pictureBox1, e.Location);
-                Fill(map, p.X, p.Y, pen.Color);
-            }
-        }*/
 
         private void pictureBox1_MouseUp(object sender, MouseEventArgs e)
         {
-            isMouse = false;
-            arrayPoints.ResetPoint();
-
+            is_mouse = false;
 
             sX = x - cX;
             sY = y - cY;
 
-            if (is_cerc)
-            {
+            if (index == 3)
                 graphics.DrawEllipse(pen, cX, cY, sX, sY);
-                pictureBox1.Image = map;
-                arrayPoints.SetPoint(e.X, e.Y);
-            }
-            
-            if (is_rectangle)
-            {
+            if (index == 4)
                 graphics.DrawRectangle(pen, cX, cY, sX, sY);
-                pictureBox1.Image = map;
-                arrayPoints.SetPoint(e.X, e.Y);
-            }
-
-            if (is_line)
-            {
+            if (index == 5)
                 graphics.DrawLine(pen, cX, cY, x, y);
-                pictureBox1.Image = map;
-                arrayPoints.SetPoint(e.X, e.Y);
-            }
+
         }
 
         private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
         {
-            if (!isMouse) { return; } 
+
+            if (is_mouse)
+            {
+                if (index == 1)
+                {
+                    px = e.Location;
+                    graphics.DrawLine(pen, px, py);
+                    py = px;
+                }
+                if (index == 2)
+                {
+                    px = e.Location;
+                    graphics.DrawLine(Eraser, px, py);
+                    py = px;
+                }
+
+                pictureBox1.Refresh();
+
+                x = e.X;
+                y = e.Y;
+                sX = e.X - cX;
+                sY = e.Y - cY;
+            }
+            /*if (!isMouse) { return; } 
 
             arrayPoints.SetPoint(e.X, e.Y);
             if (arrayPoints.GetCountPoints() >= 2 && is_Pen)
@@ -169,19 +155,15 @@ namespace paint
                 graphics.DrawLines(Eraser, arrayPoints.GetPoints());
                 pictureBox1.Image = map;
                 arrayPoints.SetPoint(e.X, e.Y);
-            }
-
-            x = e.X;
-            y = e.Y;
-            sX = e.X - cX;
-            sY = e.Y - cY;
+            }*/
         }
 
         private void Bcol1_Click(object sender, EventArgs e)
         {
             pen.Color = ((Button)sender).BackColor;
+            new_clr = ((Button)sender).BackColor;
 
-        }
+        }//Color
 
         private void clearB_Click(object sender, EventArgs e)
         {
@@ -189,61 +171,32 @@ namespace paint
             pictureBox1.Image = map;
         }
 
-        bool is_Pen = false;
-        Pen Eraser = new Pen(Color.White, 10);
-        bool is_eraser = false;
-        bool is_line = false;
-        bool is_cerc = false;
+        
 
         private void rectanglB_Click(object sender, EventArgs e)
         {
-            is_Pen = false;
-            is_eraser = false;
-            is_cerc = false;
-            is_rectangle = true;
-            is_line = false;
-            is_fill = false;
-        }
+            index = 4;
+        }//rectangle button
 
         private void lineB_Click(object sender, EventArgs e)
         {
-            is_Pen = false;
-            is_eraser = false;
-            is_cerc = false;
-            is_rectangle = false;
-            is_line = true;
-            is_fill = false;
-        }
+            index = 5;
+        }//line button
 
-        private void pictureBox1_Paint(object sender, PaintEventArgs e)///??????не работает обновление при рисовании круга, а в видео работает
+        private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
             Graphics graphics = e.Graphics;
 
-
-            /*if (isMouse)
+            if (is_mouse)
             {
-                if (is_cerc)
-                {
+                if (index == 3)
                     graphics.DrawEllipse(pen, cX, cY, sX, sY);
-                    pictureBox1.Image = map;
-                    arrayPoints.ResetPoint();
-                }
-
-                if (is_rectangle)
-                {
+                if (index == 4)
                     graphics.DrawRectangle(pen, cX, cY, sX, sY);
-                    pictureBox1.Image = map;
-                    arrayPoints.ResetPoint();
-                }
-
-                if (is_line)
-                {
+                if (index == 5)
                     graphics.DrawLine(pen, cX, cY, x, y);
-                    pictureBox1.Image = map;
-                    arrayPoints.ResetPoint();
-                }
-            }*/
-        }
+            }
+        }//Отрисовка фигур во время движения мыши
 
         private void validate(Bitmap bitmap, Stack<Point>sp, int x, int y, Color old_c, Color new_c)
         {
@@ -266,7 +219,7 @@ namespace paint
 
             while (pixel.Count > 0)
             {
-                Point p =(Point)pixel.Pop();
+                Point p = (Point)pixel.Pop();
                 if (p.X >0 && p.Y > 0 && p.X < bitmap.Width - 1 && p.Y < bitmap.Height - 1)
                 {
                     validate(bitmap, pixel, p.X - 1, p.Y, old_c, new_c);
@@ -279,56 +232,35 @@ namespace paint
 
         private void fillB_Click(object sender, EventArgs e)
         {
-            is_Pen = false;
-            is_eraser = false;
-            is_cerc = false;
-            is_rectangle = false;
-            is_line = false;
-            is_fill = true;
+            index = 7;
         }
 
         private Point set_point(PictureBox pb, Point pt)
         {
-            float px = 1f * pb.Width / pb.Width;
-            float py = 1f * pb.Height / pb.Height;
-            return new Point((int)(pt.X * px), (int)(pt.Y * py));
+            float pX = 1f * pb.Image.Width / pb.Image.Width;
+            float pY = 1f * pb.Image.Height / pb.Image.Height;
+            return new Point((int)(pt.X * pX), (int)(pt.Y * pY));
         }
 
         private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
-            if (is_fill)
+            if (index == 7)
             {
-                Point p = set_point(pictureBox1, e.Location);
-                Fill(map, p.X, p.Y, pen.Color);
+                Point point = set_point(pictureBox1, e.Location);
+                Fill(map, point.X, point.Y, pen.Color);
             }
         }
 
-        /*private void fillB_MouseClick(object sender, MouseEventArgs e)
-        {
-            is_fill = true;
-        }*/
+       
 
-        bool is_rectangle = false;
-        bool is_heart = false;
-        bool is_fill = false;
         private void penB_Click(object sender, EventArgs e)
         {
-            is_Pen = true;
-            is_eraser = false;
-            is_cerc = false;
-            is_rectangle = false;
-            is_line=false;
-            is_fill = false;
+            index = 1;
         }
 
         private void eraserB_Click(object sender, EventArgs e)
         {
-            is_eraser = true;
-            is_Pen = false;
-            is_cerc = false;
-            is_rectangle = false;
-            is_line = false;
-            is_fill = false;
+            index = 2;
         }
     }
 }
