@@ -20,6 +20,7 @@ namespace paint
             graphics = Graphics.FromImage(map);
             graphics.Clear(Color.White);
             pictureBox1.Image = map;
+            pictureBox1.BackColor = Color.Pink;
 
         }
 
@@ -97,6 +98,7 @@ namespace paint
 
             cX = e.X;
             cY = e.Y;
+            
         }
 
 
@@ -113,6 +115,7 @@ namespace paint
                 graphics.DrawRectangle(pen, cX, cY, sX, sY);
             if (index == 5)
                 graphics.DrawLine(pen, cX, cY, x, y);
+            
 
         }
 
@@ -160,14 +163,14 @@ namespace paint
 
         private void Bcol1_Click(object sender, EventArgs e)
         {
-            pen.Color = ((Button)sender).BackColor;
-            new_clr = ((Button)sender).BackColor;
+           pen.Color = ((Button)sender).BackColor;
+           new_clr = ((Button)sender).BackColor;
 
         }//Color
 
         private void clearB_Click(object sender, EventArgs e)
         {
-            graphics.Clear(pictureBox1.BackColor);
+            graphics.Clear(Color.White);
             pictureBox1.Image = map;
         }
 
@@ -209,17 +212,33 @@ namespace paint
             }
         }
 
+        private void fillB_MouseClick(object sender, MouseEventArgs e)
+        {
+            index = 7;
+        }
+
+        private void fillB_Click_1(object sender, EventArgs e)
+        {
+            index = 7;
+        }
+
+        private void heartB_Click(object sender, EventArgs e)
+        {
+            graphics.Clear(pictureBox1.BackColor);
+            pictureBox1.Image = map;
+        }
+
         private void Fill(Bitmap bitmap, int x, int y, Color new_c)
         {
             Color old_c = bitmap.GetPixel(x, y);
             Stack<Point> pixel = new Stack<Point>();
             pixel.Push(new Point(x, y));
-            bitmap.SetPixel(x, y, new_c);
-            if (old_c == new_c) return;
+            bitmap.SetPixel(x, y, new_c);// покарсили нашу точку в новый цвет
+            if (old_c == new_c) return;//если наша точка того же цвета, что и цвет пера, выходим
 
             while (pixel.Count > 0)
             {
-                Point p = (Point)pixel.Pop();
+                Point p = pixel.Pop();// достали одну точку???
                 if (p.X >0 && p.Y > 0 && p.X < bitmap.Width - 1 && p.Y < bitmap.Height - 1)
                 {
                     validate(bitmap, pixel, p.X - 1, p.Y, old_c, new_c);
@@ -237,8 +256,8 @@ namespace paint
 
         private Point set_point(PictureBox pb, Point pt)
         {
-            float pX = 1f * pb.Image.Width / pb.Image.Width;
-            float pY = 1f * pb.Image.Height / pb.Image.Height;
+            float pX = 1f * pb.Width / pb.Width;
+            float pY = 1f * pb.Height / pb.Height;
             return new Point((int)(pt.X * pX), (int)(pt.Y * pY));
         }
 
@@ -248,6 +267,7 @@ namespace paint
             {
                 Point point = set_point(pictureBox1, e.Location);
                 Fill(map, point.X, point.Y, pen.Color);
+                pictureBox1.Refresh();
             }
         }
 

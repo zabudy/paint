@@ -94,7 +94,6 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1003, 151);
             this.tableLayoutPanel1.TabIndex = 0;
-            //this.tableLayoutPanel1.Paint += new System.Windows.Forms.PaintEventHandler(this.tableLayoutPanel1_Paint_1);
             // 
             // clearB
             // 
@@ -148,6 +147,7 @@
             this.heartB.Size = new System.Drawing.Size(94, 145);
             this.heartB.TabIndex = 6;
             this.heartB.UseVisualStyleBackColor = false;
+            this.heartB.Click += new System.EventHandler(this.heartB_Click);
             // 
             // cerclB
             // 
@@ -201,7 +201,8 @@
             this.fillB.Size = new System.Drawing.Size(94, 145);
             this.fillB.TabIndex = 3;
             this.fillB.UseVisualStyleBackColor = false;
-            this.fillB.Click += new System.EventHandler(this.fillB_Click);
+            this.fillB.Click += new System.EventHandler(this.fillB_Click_1);
+            this.fillB.MouseClick += new System.Windows.Forms.MouseEventHandler(this.fillB_MouseClick);
             // 
             // tableLayoutPanel2
             // 
