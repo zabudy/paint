@@ -242,7 +242,7 @@
             // 
             // Bcol1
             // 
-            this.Bcol1.BackColor = System.Drawing.Color.White;
+            this.Bcol1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(192)))));
             this.Bcol1.Location = new System.Drawing.Point(3, 3);
             this.Bcol1.Name = "Bcol1";
             this.Bcol1.Size = new System.Drawing.Size(43, 29);
@@ -252,7 +252,7 @@
             // 
             // Bcol5
             // 
-            this.Bcol5.BackColor = System.Drawing.Color.LavenderBlush;
+            this.Bcol5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.Bcol5.Location = new System.Drawing.Point(3, 39);
             this.Bcol5.Name = "Bcol5";
             this.Bcol5.Size = new System.Drawing.Size(43, 29);
@@ -262,7 +262,7 @@
             // 
             // Bcol9
             // 
-            this.Bcol9.BackColor = System.Drawing.Color.Orchid;
+            this.Bcol9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(218)))), ((int)(((byte)(7)))), ((int)(((byte)(70)))));
             this.Bcol9.Location = new System.Drawing.Point(3, 75);
             this.Bcol9.Name = "Bcol9";
             this.Bcol9.Size = new System.Drawing.Size(43, 29);
@@ -272,7 +272,7 @@
             // 
             // Bcol13
             // 
-            this.Bcol13.BackColor = System.Drawing.Color.Violet;
+            this.Bcol13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(7)))), ((int)(((byte)(46)))));
             this.Bcol13.Location = new System.Drawing.Point(3, 112);
             this.Bcol13.Name = "Bcol13";
             this.Bcol13.Size = new System.Drawing.Size(43, 29);
@@ -302,7 +302,7 @@
             // 
             // Bcol10
             // 
-            this.Bcol10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(130)))), ((int)(((byte)(13)))), ((int)(((byte)(130)))));
+            this.Bcol10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(22)))), ((int)(((byte)(106)))));
             this.Bcol10.Location = new System.Drawing.Point(52, 75);
             this.Bcol10.Name = "Bcol10";
             this.Bcol10.Size = new System.Drawing.Size(43, 29);
@@ -312,7 +312,7 @@
             // 
             // Bcol14
             // 
-            this.Bcol14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(162)))), ((int)(((byte)(0)))), ((int)(((byte)(166)))));
+            this.Bcol14.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(5)))), ((int)(((byte)(53)))));
             this.Bcol14.Location = new System.Drawing.Point(52, 112);
             this.Bcol14.Name = "Bcol14";
             this.Bcol14.Size = new System.Drawing.Size(43, 29);
@@ -322,7 +322,7 @@
             // 
             // Bcol3
             // 
-            this.Bcol3.BackColor = System.Drawing.Color.Crimson;
+            this.Bcol3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(176)))), ((int)(((byte)(241)))));
             this.Bcol3.Location = new System.Drawing.Point(101, 3);
             this.Bcol3.Name = "Bcol3";
             this.Bcol3.Size = new System.Drawing.Size(43, 29);
@@ -332,7 +332,7 @@
             // 
             // Bcol7
             // 
-            this.Bcol7.BackColor = System.Drawing.Color.DeepPink;
+            this.Bcol7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(239)))), ((int)(((byte)(92)))), ((int)(((byte)(199)))));
             this.Bcol7.Location = new System.Drawing.Point(101, 39);
             this.Bcol7.Name = "Bcol7";
             this.Bcol7.Size = new System.Drawing.Size(43, 29);
@@ -342,16 +342,17 @@
             // 
             // Bcol11
             // 
+            this.Bcol11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(16)))), ((int)(((byte)(199)))));
             this.Bcol11.Location = new System.Drawing.Point(101, 75);
             this.Bcol11.Name = "Bcol11";
             this.Bcol11.Size = new System.Drawing.Size(43, 29);
             this.Bcol11.TabIndex = 11;
-            this.Bcol11.UseVisualStyleBackColor = true;
+            this.Bcol11.UseVisualStyleBackColor = false;
             this.Bcol11.Click += new System.EventHandler(this.Bcol1_Click);
             // 
             // Bcol15
             // 
-            this.Bcol15.BackColor = System.Drawing.Color.Purple;
+            this.Bcol15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(14)))), ((int)(((byte)(95)))));
             this.Bcol15.Location = new System.Drawing.Point(101, 112);
             this.Bcol15.Name = "Bcol15";
             this.Bcol15.Size = new System.Drawing.Size(43, 29);
@@ -361,7 +362,7 @@
             // 
             // Bcol4
             // 
-            this.Bcol4.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.Bcol4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
             this.Bcol4.Location = new System.Drawing.Point(150, 3);
             this.Bcol4.Name = "Bcol4";
             this.Bcol4.Size = new System.Drawing.Size(43, 29);
@@ -371,7 +372,7 @@
             // 
             // Bcol8
             // 
-            this.Bcol8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(220)))), ((int)(((byte)(7)))), ((int)(((byte)(172)))));
+            this.Bcol8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.Bcol8.Location = new System.Drawing.Point(150, 39);
             this.Bcol8.Name = "Bcol8";
             this.Bcol8.Size = new System.Drawing.Size(43, 29);
@@ -381,7 +382,7 @@
             // 
             // Bcol12
             // 
-            this.Bcol12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(168)))), ((int)(((byte)(6)))), ((int)(((byte)(112)))));
+            this.Bcol12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(192)))));
             this.Bcol12.Location = new System.Drawing.Point(150, 75);
             this.Bcol12.Name = "Bcol12";
             this.Bcol12.Size = new System.Drawing.Size(43, 29);
@@ -391,7 +392,7 @@
             // 
             // Bcol16
             // 
-            this.Bcol16.BackColor = System.Drawing.Color.Black;
+            this.Bcol16.BackColor = System.Drawing.Color.Purple;
             this.Bcol16.Location = new System.Drawing.Point(150, 112);
             this.Bcol16.Name = "Bcol16";
             this.Bcol16.Size = new System.Drawing.Size(43, 29);
